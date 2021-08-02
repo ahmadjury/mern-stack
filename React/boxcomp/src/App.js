@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
 import Divs from './components/Divs';
+import Form from './components/Form';
 
 function App() {
+  const [colors,setColors]=useState([]);
+
+  const handleColor=(color)=>{
+    setColors([...colors,color]);
+  }
   return (
     <div className="App">
-    <Divs />
+    <Form addBox={handleColor} />
+    <Divs boxes={colors} />
     </div>
   );
 }

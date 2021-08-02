@@ -1,23 +1,23 @@
 import React, {useState} from 'react';
 
 
-function Divs(props) {
-
-    
+const Divs = (props) => {
+    console.log(props.boxes);
+    const a = props.boxes ;
     return (
         <div style={{display:'flex'}}>
-            {props.boxes.map(
-                (item, index) => {
-                    let arr = [];
-                    for(let i = 1; i <= item.number; i++) {
-                        arr.push(<div style={{width:item.width+ 'px', height: item.height+'px', backgroundColor: item.color, margin:3+'px'}}></div>)
-                    }
-                    return arr;
-                } 
+       
+            
+            {a.map( (item,index) =>  {    return(  
+                      <div key={index} style= {{width:'200px', height:'200px', backgroundColor: item}}>{item}</div>
+            )} 
             )}
+    
+        
+
         </div>
     )
 }
 
 
-export default Divs
+export default Divs;
