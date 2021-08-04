@@ -1,0 +1,254 @@
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use my_first_db
+switched to db my_first_db
+> db.dropDatabase(0
+... ^C
+
+> db.dropDatabase()
+{ "ok" : 1 }
+> use my_first_db
+switched to db my_first_db
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+> db.createCollection("students")
+{ "ok" : 1 }
+> db.students.insert({name:"ahmad",home_state:"Nablus",luck_number:12,birthday:{mounth:12,day:22,year:1994}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"mohammad",home_state:"jenin",luck_number:13,birthday:{mounth:12,day:22,year:1995}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"omar",home_state:"ramallah",luck_number:14,birthday:{mounth:1,day:25,year:1997}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"samer",home_state:"salfeet",luck_number:15,birthday:{mounth:2,day:5,year:1999}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"lama",home_state:"nablus",luck_number:16,birthday:{mounth:8,day:8,year:2000}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find().pretty()
+{
+        "_id" : ObjectId("610a53f266c1bb96c352c00a"),
+        "name" : "ahmad",
+        "home_state" : "Nablus",
+        "luck_number" : 12,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1994
+        }
+}
+{
+        "_id" : ObjectId("610a541666c1bb96c352c00b"),
+        "name" : "mohammad",
+        "home_state" : "jenin",
+        "luck_number" : 13,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1995
+        }
+}
+{
+        "_id" : ObjectId("610a543566c1bb96c352c00c"),
+        "name" : "omar",
+        "home_state" : "ramallah",
+        "luck_number" : 14,
+        "birthday" : {
+                "mounth" : 1,
+                "day" : 25,
+                "year" : 1997
+        }
+}
+{
+        "_id" : ObjectId("610a545266c1bb96c352c00d"),
+        "name" : "samer",
+        "home_state" : "salfeet",
+        "luck_number" : 15,
+        "birthday" : {
+                "mounth" : 2,
+                "day" : 5,
+                "year" : 1999
+        }
+}
+{
+        "_id" : ObjectId("610a548b66c1bb96c352c00e"),
+        "name" : "lama",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+> db.students.find({home_state:"nablus"})
+{ "_id" : ObjectId("610a548b66c1bb96c352c00e"), "name" : "lama", "home_state" : "nablus", "luck_number" : 16, "birthday" : { "mounth" : 8, "day" : 8, "year" : 2000 } }
+> db.students.find({home_state:"nablus",})
+{ "_id" : ObjectId("610a548b66c1bb96c352c00e"), "name" : "lama", "home_state" : "nablus", "luck_number" : 16, "birthday" : { "mounth" : 8, "day" : 8, "year" : 2000 } }
+> db.students.find({home_state:"nablus",}).pretty()
+{
+        "_id" : ObjectId("610a548b66c1bb96c352c00e"),
+        "name" : "lama",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+> db.students.insert({name:"nawal",home_state:"nablus",luck_number:16,birthday:{mounth:8,day:8,year:2000}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find({home_state:"nablus",}).pretty()
+{
+        "_id" : ObjectId("610a548b66c1bb96c352c00e"),
+        "name" : "lama",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+{
+        "_id" : ObjectId("610a562966c1bb96c352c00f"),
+        "name" : "nawal",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("610a53f266c1bb96c352c00a"),
+        "name" : "ahmad",
+        "home_state" : "Nablus",
+        "luck_number" : 12,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1994
+        }
+}
+{
+        "_id" : ObjectId("610a541666c1bb96c352c00b"),
+        "name" : "mohammad",
+        "home_state" : "jenin",
+        "luck_number" : 13,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1995
+        }
+}
+{
+        "_id" : ObjectId("610a543566c1bb96c352c00c"),
+        "name" : "omar",
+        "home_state" : "ramallah",
+        "luck_number" : 14,
+        "birthday" : {
+                "mounth" : 1,
+                "day" : 25,
+                "year" : 1997
+        }
+}
+{
+        "_id" : ObjectId("610a545266c1bb96c352c00d"),
+        "name" : "samer",
+        "home_state" : "salfeet",
+        "luck_number" : 15,
+        "birthday" : {
+                "mounth" : 2,
+                "day" : 5,
+                "year" : 1999
+        }
+}
+{
+        "_id" : ObjectId("610a548b66c1bb96c352c00e"),
+        "name" : "lama",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+{
+        "_id" : ObjectId("610a562966c1bb96c352c00f"),
+        "name" : "nawal",
+        "home_state" : "nablus",
+        "luck_number" : 16,
+        "birthday" : {
+                "mounth" : 8,
+                "day" : 8,
+                "year" : 2000
+        }
+}
+> db.students.find({"lucky_number":{lt:13}}).pretty()
+> db.students.find({"lucky_number":{$lt:13}}).pretty()
+> db.students.find({"luck_number":{$lt:13}}).pretty()
+{
+        "_id" : ObjectId("610a53f266c1bb96c352c00a"),
+        "name" : "ahmad",
+        "home_state" : "Nablus",
+        "luck_number" : 12,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1994
+        }
+}
+> db.students.find({"luck_number":{$lte:13}}).pretty()
+{
+        "_id" : ObjectId("610a53f266c1bb96c352c00a"),
+        "name" : "ahmad",
+        "home_state" : "Nablus",
+        "luck_number" : 12,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1994
+        }
+}
+{
+        "_id" : ObjectId("610a541666c1bb96c352c00b"),
+        "name" : "mohammad",
+        "home_state" : "jenin",
+        "luck_number" : 13,
+        "birthday" : {
+                "mounth" : 12,
+                "day" : 22,
+                "year" : 1995
+        }
+}
+> db.students.find({"luck_number":{$gte:13,$lte:15}})
+{ "_id" : ObjectId("610a541666c1bb96c352c00b"), "name" : "mohammad", "home_state" : "jenin", "luck_number" : 13, "birthday" : { "mounth" : 12, "day" : 22, "year" : 1995 } }
+{ "_id" : ObjectId("610a543566c1bb96c352c00c"), "name" : "omar", "home_state" : "ramallah", "luck_number" : 14, "birthday" : { "mounth" : 1, "day" : 25, "year" : 1997 } }
+{ "_id" : ObjectId("610a545266c1bb96c352c00d"), "name" : "samer", "home_state" : "salfeet", "luck_number" : 15, "birthday" : { "mounth" : 2, "day" : 5, "year" : 1999 } }
+> db.students.find({"luck_number":{$gte:13,$lte:15}},name: "ahmad")
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:55
+> db.students.find({"luck_number":{$gte:12,$lte:15}},name: "ahmad")
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:55
+> db.students.find({"luck_number":{$gte:12,$lte:15},name:"ahmad"})
+{ "_id" : ObjectId("610a53f266c1bb96c352c00a"), "name" : "ahmad", "home_state" : "Nablus", "luck_number" : 12, "birthday" : { "mounth" : 12, "day" : 22, "year" : 1994 } }
+> ^C
+bye
+
+c:\Program Files\MongoDB\Server\5.0\bin>
