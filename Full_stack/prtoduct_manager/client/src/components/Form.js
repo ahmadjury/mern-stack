@@ -19,7 +19,7 @@ const Form = () => {
         })
 
     
-        .then(res=>console.log(res))
+        .then(res=>console.log(res)) //here must add res.data to ListProduct
         .catch(err=>console.log(err))
     
     }

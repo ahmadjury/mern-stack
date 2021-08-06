@@ -1,7 +1,7 @@
 const Product = require('../models/product.model')
 module.exports.findAllProducts = (req, res) => {
     Product.find()
-        .then(allDaUsers => res.json( allDaUsers))
+        .then(allProducts => res.json( allProducts))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
  
