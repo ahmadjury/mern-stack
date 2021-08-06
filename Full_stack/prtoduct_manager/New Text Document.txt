@@ -1,0 +1,7 @@
+server 
+npm install mongoose express 
+
+
+client
+npm install axios
+npm install @reach/router
