@@ -5,11 +5,12 @@ module.exports.findAllProducts = (req, res) => {
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
  
-// module.exports.findOneSingleUser = (req, res) => {
-//     User.findOne({ _id: req.params.id })
-//         .then(oneSingleUser => res.json({ user: oneSingleUser }))
-//         .catch(err => res.json({ message: 'Something went wrong', error: err }));
-// }
+module.exports.findOneSingleProduct = (req, res) => {
+    // console.log(req.params.id);
+    Product.findOne({ _id: req.params.id })
+        .then(oneSingleProduct => res.json( oneSingleProduct))
+        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+}
  
 module.exports.createNewProduct = (req, res) => {
     Product.create(req.body)
