@@ -5,6 +5,8 @@ import Form from './components/Form';
 import ListProduct from './components/ListProduct';
 import {Router} from '@reach/router';
 import Detail from './components/Detail';
+import Update from './components/Update'
+
 
 
 
@@ -14,20 +16,26 @@ function App() {
     axios.get('http://localhost:8000/api/products')
     .then(res=>{
      console.log(product);
-        setProduct(res.data);
+      setProduct(res.data);
       })
- },[])
+    },[])
+
+  const removeFromDom =(productId)=>{
+    setProduct(product.filter(product => product._id != productId));
+  }
   return (
     <div className="App">
       <>
-     <Form/>  
      <Router>
-        <ListProduct product={product} path="/products" /> 
+        <Form path ="/" />  
+        <ListProduct product={product} path="/products" removeFromDom={removeFromDom}/> 
         <Detail path= "products/:id" />
+        <Update path="products/edit/:id" />
+        
       </Router>
+      
       </>
     </div>
   );
-
-}
+  }
 export default App;

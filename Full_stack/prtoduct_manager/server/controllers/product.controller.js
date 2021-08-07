@@ -24,7 +24,7 @@ module.exports.updateExistingProduct = (req, res) => {
         req.body,
         { new: true, runValidators: true }
     )
-        .then(updatedUser => res.json({ user: updatedUser }))
+        .then(updatedProduct => res.json({ updatedProduct }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
  
